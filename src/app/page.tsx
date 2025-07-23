@@ -18,7 +18,12 @@ import Newsletter from './newsletter/page';
 import StatisticsSection from './experienced/page';
 import AboutSection from './aboutsec/page';
 import WhyChooseUs from './whychooseus/page';
-import MeatProductListingPage from './prouctsCard/page';
+
+import Deliver from './deliver/page';
+import HowItWorks from './hoework/page';
+import Newsletters from './subscribe/page';
+import ProductCard from './prouctsCard/page';
+
 
 export default function HeroSec() {
   const controls = useAnimation();
@@ -214,12 +219,12 @@ export default function HeroSec() {
             />
         </div>
         <AboutSection/>
-        <MeatProductListingPage/>
-        <Quick/>
-        <WhyChooseUs/>
-        <Newsletter/>
-        <StatisticsSection/>
-        < ReviewsSection/>
+       <ProductCard/>
+        <Deliver/>
+        <HowItWorks/>
+        
+        <Newsletters/>
+        
     </div>
   );
 }

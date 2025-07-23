@@ -92,177 +92,177 @@
 
 
 
-"use client";
+// "use client";
 
 
 
-"use client"
-import AddToCartButton from "@/app/components/AddToCartButton/page";
-import { client } from "@/sanity/lib/client";
-import { urlFor } from "@/sanity/lib/image";
-import Image from "next/image";
+// "use client"
+// import AddToCartButton from "@/app/components/AddToCartButton/page";
+// import { client } from "@/sanity/lib/client";
+// import { urlFor } from "@/sanity/lib/image";
+// import Image from "next/image";
 
-// ✅ Props
-interface ProductPageProps {
-  params: {
-    id: string;
-  };
-}
+// // ✅ Props
+// interface ProductPageProps {
+//   params: {
+//     id: string;
+//   };
+// }
 
-// ✅ MeatProduct
-interface MeatProduct {
-  _id: string;
-  name: string;
-  price: number;
-  originalPrice?: number;
-  description?: string;
-  imageUrl: string;
-  rating?: number;
-  category?: string;
-  isPremium?: boolean;
-  tags?: string[];
-  weight?: string[];
-}
+// // ✅ MeatProduct
+// interface MeatProduct {
+//   _id: string;
+//   name: string;
+//   price: number;
+//   originalPrice?: number;
+//   description?: string;
+//   imageUrl: string;
+//   rating?: number;
+//   category?: string;
+//   isPremium?: boolean;
+//   tags?: string[];
+//   weight?: string[];
+// }
 
-// ✅ Dynamic Page
-export default async function ProductPage({ params }: ProductPageProps) {
-  const { id } = params;
+// // ✅ Dynamic Page
+// export default async function ProductPage({ params }: ProductPageProps) {
+//   const { id } = params;
 
-  const query = `*[_type == "meat" && _id == "${id}"][0] {
-    _id,
-    name,
-    price,
-    originalPrice,
-    description,
-    "imageUrl": image.asset->url,
-    rating,
-    category,
-    isPremium,
-    tags,
-    weight
-  }`;
+//   const query = `*[_type == "meat" && _id == "${id}"][0] {
+//     _id,
+//     name,
+//     price,
+//     originalPrice,
+//     description,
+//     "imageUrl": image.asset->url,
+//     rating,
+//     category,
+//     isPremium,
+//     tags,
+//     weight
+//   }`;
 
-  const product: MeatProduct = await client.fetch(query);
+//   const product: MeatProduct = await client.fetch(query);
 
-  if (!product) {
-    return <div className="text-center text-gray-600 py-12">Product not found.</div>;
-  }
+//   if (!product) {
+//     return <div className="text-center text-gray-600 py-12">Product not found.</div>;
+//   }
 
-  const discount =
-    product.originalPrice
-      ? Math.round(
-          ((product.originalPrice - product.price) / product.originalPrice) * 100
-        )
-      : 0;
+//   const discount =
+//     product.originalPrice
+//       ? Math.round(
+//           ((product.originalPrice - product.price) / product.originalPrice) * 100
+//         )
+//       : 0;
 
-  return (
-    <div className="bg-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+//   return (
+//     <div className="bg-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+//       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         
-        {/* Product Image */}
-        <div className="relative group">
-          <Image
-            src={urlFor(product.imageUrl).url()}
-            alt={product.name}
-            width={800}
-            height={800}
-            className="rounded-2xl shadow-2xl object-cover w-full transition-transform duration-300 group-hover:scale-105"
-          />
+//         {/* Product Image */}
+//         <div className="relative group">
+//           <Image
+//             src={urlFor(product.imageUrl).url()}
+//             alt={product.name}
+//             width={800}
+//             height={800}
+//             className="rounded-2xl shadow-2xl object-cover w-full transition-transform duration-300 group-hover:scale-105"
+//           />
 
-          {/* Premium Badge */}
-          {product.isPremium && (
-            <div className="absolute top-4 left-4 bg-gradient-to-r from-red-600 to-red-800 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-              PREMIUM
-            </div>
-          )}
+//           {/* Premium Badge */}
+//           {product.isPremium && (
+//             <div className="absolute top-4 left-4 bg-gradient-to-r from-red-600 to-red-800 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+//               PREMIUM
+//             </div>
+//           )}
 
-          {/* Discount Badge */}
-          {discount > 0 && (
-            <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
-              {discount}% OFF
-            </div>
-          )}
-        </div>
+//           {/* Discount Badge */}
+//           {discount > 0 && (
+//             <div className="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">
+//               {discount}% OFF
+//             </div>
+//           )}
+//         </div>
 
-        {/* Product Details */}
-        <div>
-          <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
-            {product.name}
-          </h1>
+//         {/* Product Details */}
+//         <div>
+//           <h1 className="text-5xl font-extrabold text-gray-900 mb-4">
+//             {product.name}
+//           </h1>
 
-          {/* Category */}
-          {product.category && (
-            <span className="inline-block bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
-              {product.category}
-            </span>
-          )}
+//           {/* Category */}
+//           {product.category && (
+//             <span className="inline-block bg-red-100 text-red-800 text-xs font-semibold px-3 py-1 rounded-full mb-4">
+//               {product.category}
+//             </span>
+//           )}
 
-          {/* Price */}
-          <div className="flex items-baseline mb-6">
-            <span className="text-4xl font-bold text-red-700">
-              PKR {product.price.toLocaleString()}
-            </span>
-            {product.originalPrice && (
-              <span className="ml-4 line-through text-xl text-gray-500">
-                PKR {product.originalPrice.toLocaleString()}
-              </span>
-            )}
-          </div>
+//           {/* Price */}
+//           <div className="flex items-baseline mb-6">
+//             <span className="text-4xl font-bold text-red-700">
+//               PKR {product.price.toLocaleString()}
+//             </span>
+//             {product.originalPrice && (
+//               <span className="ml-4 line-through text-xl text-gray-500">
+//                 PKR {product.originalPrice.toLocaleString()}
+//               </span>
+//             )}
+//           </div>
 
-          {/* Description */}
-          {product.description && (
-            <p className="text-gray-700 text-lg leading-relaxed mb-6">
-              {product.description}
-            </p>
-          )}
+//           {/* Description */}
+//           {product.description && (
+//             <p className="text-gray-700 text-lg leading-relaxed mb-6">
+//               {product.description}
+//             </p>
+//           )}
 
-          {/* Weight Tags */}
-          {product.weight && product.weight.length > 0 && (
-            <div className="mb-6">
-              <h3 className="text-sm font-semibold text-gray-800 mb-2">Available Weights:</h3>
-              <div className="flex flex-wrap gap-2">
-                {product.weight.map((w) => (
-                  <span
-                    key={w}
-                    className="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-3 py-1 rounded-full"
-                  >
-                    {w}
-                  </span>
-                ))}
-              </div>
-            </div>
-          )}
+//           {/* Weight Tags */}
+//           {product.weight && product.weight.length > 0 && (
+//             <div className="mb-6">
+//               <h3 className="text-sm font-semibold text-gray-800 mb-2">Available Weights:</h3>
+//               <div className="flex flex-wrap gap-2">
+//                 {product.weight.map((w) => (
+//                   <span
+//                     key={w}
+//                     className="inline-block bg-gray-100 text-gray-800 text-xs font-medium px-3 py-1 rounded-full"
+//                   >
+//                     {w}
+//                   </span>
+//                 ))}
+//               </div>
+//             </div>
+//           )}
 
-          {/* Add to Cart Button */}
-          {/* <button
+//           {/* Add to Cart Button */}
+//           {/* <button
           
-            className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-semibold rounded-full shadow-lg hover:from-red-700 hover:to-red-900 transition-all duration-200"
-          >
-            Add to Cart
-          </button> */}
+//             className="inline-block w-full md:w-auto px-8 py-3 bg-gradient-to-r from-red-600 to-red-800 text-white text-sm font-semibold rounded-full shadow-lg hover:from-red-700 hover:to-red-900 transition-all duration-200"
+//           >
+//             Add to Cart
+//           </button> */}
 
 
-          {/* <AddToCartButton
-  product={{
-    _id: product._id,
-    name: product.name,
-    price: product.price,
-    imageUrl: product.imageUrl,
-  }}
-/> */}
-<AddToCartButton
-product={{
-    _id: product._id,
-    name: product.name,
-    price: product.price,
-    imageUrl: product.imageUrl,
-  }}
-/>
-        </div>
-      </div>
-    </div>
-  );
-}
+//           {/* <AddToCartButton
+//   product={{
+//     _id: product._id,
+//     name: product.name,
+//     price: product.price,
+//     imageUrl: product.imageUrl,
+//   }}
+// /> */}
+// <AddToCartButton
+// product={{
+//     _id: product._id,
+//     name: product.name,
+//     price: product.price,
+//     imageUrl: product.imageUrl,
+//   }}
+// />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// }
 
 
 
