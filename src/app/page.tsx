@@ -23,6 +23,7 @@ import Deliver from './deliver/page';
 import HowItWorks from './hoework/page';
 import Newsletters from './subscribe/page';
 import ProductCard from './prouctsCard/page';
+import TestimonialsCarousel from './testomonials/page';
 
 
 export default function HeroSec() {
@@ -222,6 +223,7 @@ export default function HeroSec() {
        <ProductCard/>
         <Deliver/>
         <HowItWorks/>
+        <TestimonialsCarousel/>
         
         <Newsletters/>
         

@@ -9,12 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@headlessui/react": "^2.2.5",
     "@heroicons/react": "^2.2.0",
     "@sanity/client": "^6.27.2",
     "@sanity/image-url": "^1.1.0",
     "@sanity/types": "^3.72.1",
     "@sanity/vision": "^3.72.1",
-    "framer-motion": "^12.23.3",
+    "framer-motion": "^12.23.7",
     "gsap": "^3.12.7",
     "lucide-react": "^0.475.0",
     "next": "15.1.6",
