@@ -1,5 +1,68 @@
 
 
+// export const chicken = {
+//   name: 'chicken',
+//   title: 'Chicken',
+//   type: 'document',
+//   fields: [
+//     {
+//       name: 'pic',
+//       title: 'Product Image',
+//       type: 'image',
+//       options: { hotspot: true },
+//       validation: Rule => Rule.required(),
+//     },
+//     {
+//       name: 'name',
+//       title: 'Product Name',
+//       type: 'string',
+//       validation: Rule =>
+//         Rule.required().min(3).max(100).error('Product name is required'),
+//     },
+//     {
+//       name: 'slug',
+//       title: 'Slug',
+//       type: 'slug',
+//       options: { source: 'name', maxLength: 96 },
+//       validation: Rule => Rule.required().error('Slug is required'),
+//     },
+//     {
+//       name: 'rating',
+//       title: 'Rating',
+//       type: 'number',
+//       validation: Rule => Rule.min(0).max(5).error('Rating must be between 0 and 5'),
+//     },
+//     {
+//       name: 'price',
+//       title: 'Price',
+//       type: 'number',
+//       validation: Rule => Rule.required().positive().error('Price must be a positive number'),
+//     },
+//     {
+//       name: 'discountPrice',
+//       title: 'Discount Price',
+//       type: 'number',
+//       description: 'Optional discounted price',
+//     },
+//     {
+//       name: 'kg',
+//       title: 'Kilograms',
+//       type: 'number',
+//       description: 'Weight in kg',
+//     },
+//     {
+//       name: 'gram',
+//       title: 'Grams',
+//       type: 'number',
+//       description: 'Weight in grams',
+//     },
+//   ],
+// };
+
+
+
+import type { Rule } from "sanity";
+
 export const chicken = {
   name: 'chicken',
   title: 'Chicken',
@@ -10,13 +73,13 @@ export const chicken = {
       title: 'Product Image',
       type: 'image',
       options: { hotspot: true },
-      validation: Rule => Rule.required(),
+      validation: (Rule: Rule) => Rule.required(),
     },
     {
       name: 'name',
       title: 'Product Name',
       type: 'string',
-      validation: Rule =>
+      validation: (Rule: Rule) =>
         Rule.required().min(3).max(100).error('Product name is required'),
     },
     {
@@ -24,19 +87,21 @@ export const chicken = {
       title: 'Slug',
       type: 'slug',
       options: { source: 'name', maxLength: 96 },
-      validation: Rule => Rule.required().error('Slug is required'),
+      validation: (Rule: Rule) => Rule.required().error('Slug is required'),
     },
     {
       name: 'rating',
       title: 'Rating',
       type: 'number',
-      validation: Rule => Rule.min(0).max(5).error('Rating must be between 0 and 5'),
+      validation: (Rule: Rule) =>
+        Rule.min(0).max(5).error('Rating must be between 0 and 5'),
     },
     {
       name: 'price',
       title: 'Price',
       type: 'number',
-      validation: Rule => Rule.required().positive().error('Price must be a positive number'),
+      validation: (Rule: Rule) =>
+        Rule.required().positive().error('Price must be a positive number'),
     },
     {
       name: 'discountPrice',
