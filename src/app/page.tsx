@@ -9,13 +9,10 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 
-import { div } from 'framer-motion/client';
 
 import Script from 'next/script';
-import Quick from './quick/page';
-import ReviewsSection from './revi/page';
-import Newsletter from './newsletter/page';
-import StatisticsSection from './experienced/page';
+
+
 import AboutSection from './aboutsec/page';
 import WhyChooseUs from './whychooseus/page';
 
@@ -221,6 +218,7 @@ export default function HeroSec() {
         </div>
         <AboutSection/>
        <ProductCard/>
+       <WhyChooseUs/>
         <Deliver/>
         <HowItWorks/>
         <TestimonialsCarousel/>

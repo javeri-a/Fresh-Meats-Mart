@@ -1,3 +1,5 @@
+"use client"
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { FiTruck, FiClock, FiShield, FiShoppingCart, FiPhoneCall } from 'react-icons/fi';
@@ -5,7 +7,6 @@ import { motion, useAnimation } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { useEffect } from 'react';
 
-import { div } from 'framer-motion/client';
 
 
 

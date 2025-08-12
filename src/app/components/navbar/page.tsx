@@ -16,7 +16,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center">
               {/* Add your logo image here */}
-              <span className="text-2xl font-bold ml-2">FRESH MEAT MART</span>
+              <span className="text-2xl font-bold ml-2">Fresh Meat Mart</span>
             </Link>
           </div>
 
@@ -37,14 +37,14 @@ const Navbar = () => {
                 </button>
                 
                 <div className="absolute hidden group-hover:block bg-white text-red-700 min-w-[200px] rounded-md shadow-lg">
-                  <Link href="/shop/beef" className="block px-4 py-2 text-sm hover:bg-red-50">
+                  <Link href="/meatProduct" className="block px-4 py-2 text-sm hover:bg-red-50">
                     Beef
                   </Link>
-                  <Link href="/shop/chicken" className="block px-4 py-2 text-sm hover:bg-red-50">
+                  <Link href="/chickenProducts " className="block px-4 py-2 text-sm hover:bg-red-50">
                     Chicken
                   </Link>
-                  <Link href="/shop/lamb" className="block px-4 py-2 text-sm hover:bg-red-50">
-                    Lamb
+                  <Link href="/goatProducts" className="block px-4 py-2 text-sm hover:bg-red-50">
+                    Goat
                   </Link>
                 </div>
               </div>
@@ -128,7 +128,7 @@ const Navbar = () => {
             </Link>
             <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium">
               About Us
-//             </Link>
+            </Link>
             <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium">
               Contact
             </Link>

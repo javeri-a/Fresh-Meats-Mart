@@ -1,4 +1,3 @@
-
 // "use client";
 
 // import { Star, ShoppingCart, MoonStar } from "lucide-react";
@@ -26,7 +25,7 @@
 
 //   useEffect(() => {
 //     async function fetchProducts() {
-//       const query = `*[_type == "selling"]{
+//       const query = `*[_type == "chicken"]{
 //         _id,
 //         name,
 //         "slug": slug.current,
@@ -69,7 +68,7 @@
 
 //       <div className="text-center py-10">
 //         <h2 className="text-4xl sm:text-5xl font-extrabold text-red-700">
-//           OUR TOP SELLING ITEMS
+//           OUR CHICKEN SECTION
 //         </h2>
 //         <p className="text-gray-600 mt-3 text-lg">
 //           Freshness & Quality You Can Trust
@@ -160,13 +159,6 @@
 //   );
 // }
 
-
-
-
-
-
-
-
 "use client";
 
 import { Star, ShoppingCart, MoonStar } from "lucide-react";
@@ -203,7 +195,7 @@ export default function ProductsCardPage() {
 
   useEffect(() => {
     async function fetchProducts() {
-      const query = `*[_type == "selling"]{
+      const query = `*[_type == "chicken"]{
         _id,
         name,
         "slug": slug.current,
@@ -246,7 +238,7 @@ export default function ProductsCardPage() {
 
       <div className="text-center py-10">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-red-700">
-          OUR TOP SELLING ITEMS
+          OUR CHICKEN SECTION
         </h2>
         <p className="text-gray-600 mt-3 text-lg">
           Freshness & Quality You Can Trust

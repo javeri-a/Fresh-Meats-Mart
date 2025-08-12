@@ -1,4 +1,5 @@
 // components/ProcessSection.js
+"use client"
 import { motion } from 'framer-motion';
 import { ShoppingCartIcon, ClockIcon, TruckIcon } from '@heroicons/react/24/outline';
 
