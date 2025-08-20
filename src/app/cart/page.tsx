@@ -1,12 +1,10 @@
-
-
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import Image from "next/image";
-import { FiTrash2, FiPlus, FiMinus, FiArrowRight } from "react-icons/fi";
+import { motion } from "framer-motion";
+import { User, Phone, Home, MapPin, Wallet } from "lucide-react";
 
+// Product type
 interface Product {
   _id: string;
   name: string;
@@ -15,176 +13,186 @@ interface Product {
   quantity: number;
 }
 
-const MeatCard = ({
-  item,
-  onRemove,
-  onUpdateQuantity,
-}: {
-  item: Product;
-  onRemove: () => void;
-  onUpdateQuantity: (quantity: number) => void;
-}) => (
-  <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-all duration-300">
-    <div className="flex p-4">
-      <div className="relative w-24 h-24 flex-shrink-0">
-        <Image
-          src={item.image}
-          alt={item.name}
-          fill
-          className="object-cover rounded-lg"
-        />
-      </div>
-      
-      <div className="ml-4 flex-grow">
-        <div className="flex justify-between items-start">
-          <h3 className="text-lg font-bold text-gray-900">{item.name}</h3>
-          <button 
-            onClick={onRemove}
-            className="text-gray-400 hover:text-red-600 transition-colors"
-          >
-            <FiTrash2 size={18} />
-          </button>
-        </div>
-        
-        <p className="text-red-600 font-semibold mt-1">${item.price.toFixed(2)}</p>
-        
-        <div className="flex items-center mt-4">
-          <button
-            onClick={() => onUpdateQuantity(item.quantity - 1)}
-            className="w-8 h-8 flex items-center justify-center rounded-full bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
-            disabled={item.quantity <= 1}
-          >
-            <FiMinus size={14} />
-          </button>
-          <span className="mx-3 text-gray-900 font-medium w-6 text-center">
-            {item.quantity}
-          </span>
-          <button
-            onClick={() => onUpdateQuantity(item.quantity + 1)}
-            className="w-8 h-8 flex items-center justify-center rounded-full bg-red-50 text-red-600 hover:bg-red-100 transition-colors"
-          >
-            <FiPlus size={14} />
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
-);
+export default function Checkout() {
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    address: "",
+    city: "Karachi",
+    paymentMethod: "COD",
+  });
 
-export default function CyberButcherCart() {
   const [items, setItems] = useState<Product[]>([]);
-  const router = useRouter();
+  const [total, setTotal] = useState(0);
 
+  // Load cart
   useEffect(() => {
-    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const cartItems: Product[] = JSON.parse(localStorage.getItem("cart") || "[]");
     setItems(cartItems);
+    const totalPrice = cartItems.reduce(
+      (sum, item) => sum + item.price * item.quantity,
+      0
+    );
+    setTotal(totalPrice);
   }, []);
 
-  const handleRemove = (id: string) => {
-    const updatedItems = items.filter((item) => item._id !== id);
-    setItems(updatedItems);
-    localStorage.setItem("cart", JSON.stringify(updatedItems));
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleQuantity = (id: string, q: number) => {
-    if (q < 1) return;
-    const updatedItems = items.map((item) =>
-      item._id === id ? { ...item, quantity: q } : item
-    );
-    setItems(updatedItems);
-    localStorage.setItem("cart", JSON.stringify(updatedItems));
-  };
-
-  const handleBuyNow = () => {
-    router.push("/checkout");
-  };
-
-  const calculateTotalPrice = () => {
-    return items.reduce((total, item) => total + item.price * item.quantity, 0);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Order Submitted:", { ...form, items, total });
+    alert("✅ Order placed successfully!");
+    localStorage.removeItem("cart");
+    setItems([]);
   };
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Premium Header */}
-      <header className="bg-gradient-to-r from-red-600 to-red-800 text-white">
-        <div className="container mx-auto px-4 py-8">
-          <div className="flex justify-between items-center">
-            <div>
-              <h1 className="text-3xl font-bold tracking-tight">
-                Cyber Butcher Cart
-              </h1>
-              <p className="text-red-100 mt-1">
-                Your premium meat selections
-              </p>
-            </div>
-            <div className="bg-white/10 px-4 py-2 rounded-full">
-              <span className="font-medium">{items.length} items</span>
-            </div>
-          </div>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
-        {items.length === 0 ? (
-          <div className="text-center py-20 border-2 border-dashed border-gray-200 rounded-xl">
-            <div className="text-6xl mb-6 text-red-400">🛒</div>
-            <h2 className="text-2xl font-bold text-gray-800 mb-2">
-              Your cart is empty
-            </h2>
-            <p className="text-gray-600 max-w-md mx-auto">
-              Browse our premium cuts and add something special to your cart
-            </p>
-            <button
-              onClick={() => router.push("/products")}
-              className="mt-6 px-6 py-3 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors flex items-center mx-auto"
-            >
-              Shop Now <FiArrowRight className="ml-2" />
-            </button>
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {items.map((item) => (
-              <MeatCard
-                key={item._id}
-                item={item}
-                onRemove={() => handleRemove(item._id)}
-                onUpdateQuantity={(q) => handleQuantity(item._id, q)}
+    <div className="min-h-screen bg-gradient-to-br from-red-50 to-white py-12 px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-10"
+      >
+        {/* Left: Checkout Form */}
+        <motion.div
+          initial={{ x: -40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.5 }}
+          className="bg-white rounded-3xl shadow-xl p-8 border border-red-100"
+        >
+          <h1 className="text-3xl font-extrabold text-red-600 mb-6">🥩 Checkout</h1>
+          <form onSubmit={handleSubmit} className="space-y-6">
+            {/* Name */}
+            <div className="relative">
+              <User className="absolute left-3 top-3 text-red-500" size={20} />
+              <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                value={form.name}
+                onChange={handleChange}
+                required
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-red-400 outline-none"
               />
-            ))}
-          </div>
-        )}
+            </div>
 
-        {/* Summary Section */}
-        {items.length > 0 && (
-          <div className="mt-8 bg-gray-50 rounded-xl p-6">
-            <div className="flex justify-between items-center mb-4">
-              <h3 className="text-lg font-semibold text-gray-900">Subtotal</h3>
-              <span className="text-lg font-bold text-gray-900">
-                ${calculateTotalPrice().toFixed(2)}
-              </span>
+            {/* Phone */}
+            <div className="relative">
+              <Phone className="absolute left-3 top-3 text-red-500" size={20} />
+              <input
+                type="text"
+                name="phone"
+                placeholder="Phone Number"
+                value={form.phone}
+                onChange={handleChange}
+                required
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-red-400 outline-none"
+              />
             </div>
-            <div className="flex justify-between items-center mb-6">
-              <h3 className="text-lg font-semibold text-gray-900">Shipping</h3>
-              <span className="text-lg font-bold text-green-600">FREE</span>
+
+            {/* Address */}
+            <div className="relative">
+              <Home className="absolute left-3 top-3 text-red-500" size={20} />
+              <textarea
+                name="address"
+                placeholder="Delivery Address"
+                value={form.address}
+                onChange={handleChange}
+                required
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 focus:ring-2 focus:ring-red-400 outline-none"
+              />
             </div>
-            <div className="border-t border-gray-200 pt-4">
-              <div className="flex justify-between items-center">
-                <h3 className="text-xl font-bold text-gray-900">Total</h3>
-                <span className="text-xl font-bold text-red-600">
-                  ${calculateTotalPrice().toFixed(2)}
-                </span>
+
+            {/* City fixed */}
+            <div className="relative">
+              <MapPin className="absolute left-3 top-3 text-red-500" size={20} />
+              <input
+                type="text"
+                name="city"
+                value={form.city}
+                disabled
+                className="w-full pl-10 pr-4 py-3 rounded-xl border border-gray-300 bg-gray-100 text-gray-500 cursor-not-allowed"
+              />
+              <p className="text-sm text-gray-500 mt-1">🚚 Delivery available only in Karachi</p>
+            </div>
+
+            {/* Payment */}
+            <div>
+              <label className="block mb-2 font-semibold flex items-center gap-2 text-gray-700">
+                <Wallet className="text-red-500" size={20} /> Payment Method
+              </label>
+              <div className="flex gap-4">
+                {["COD", "Easypaisa", "HBL"].map((method) => (
+                  <label
+                    key={method}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-xl border cursor-pointer transition-all ${
+                      form.paymentMethod === method
+                        ? "bg-red-100 border-red-500 text-red-600"
+                        : "bg-white border-gray-300"
+                    }`}
+                  >
+                    <input
+                      type="radio"
+                      name="paymentMethod"
+                      value={method}
+                      checked={form.paymentMethod === method}
+                      onChange={handleChange}
+                      className="hidden"
+                    />
+                    {method}
+                  </label>
+                ))}
               </div>
             </div>
-            
-            <button
-              onClick={handleBuyNow}
-              className="mt-6 w-full py-4 bg-gradient-to-r from-red-600 to-red-800 text-white text-lg font-semibold rounded-lg hover:from-red-700 hover:to-red-900 transition-all shadow-md flex items-center justify-center"
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              type="submit"
+              className="w-full py-3 bg-gradient-to-r from-red-600 to-red-700 text-white font-bold text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
             >
-              Proceed to Checkout <FiArrowRight className="ml-2" />
-            </button>
+              Place Order
+            </motion.button>
+          </form>
+        </motion.div>
+
+        {/* Right: Cart Summary */}
+        <motion.div
+          initial={{ x: 40, opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.5 }}
+          className="bg-white rounded-3xl shadow-xl p-8 border border-red-100"
+        >
+          <h2 className="text-2xl font-bold text-red-600 mb-6">🛒 Order Summary</h2>
+          <div className="space-y-4 max-h-[400px] overflow-y-auto">
+            {items.map((item: Product) => (
+              <motion.div
+                key={item._id}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3 }}
+                className="flex justify-between items-center border-b pb-2"
+              >
+                <span className="font-medium text-gray-700">
+                  {item.name} x {item.quantity}
+                </span>
+                <span className="text-red-600 font-bold">
+                  ${(item.price * item.quantity).toFixed(2)}
+                </span>
+              </motion.div>
+            ))}
           </div>
-        )}
-      </main>
+          <div className="mt-6 border-t pt-4">
+            <div className="flex justify-between text-lg font-bold">
+              <span>Total:</span>
+              <span className="text-red-600">${total.toFixed(2)}</span>
+            </div>
+          </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 }
