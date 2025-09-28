@@ -53,7 +53,7 @@ const ContactPage = () => {
           transition={{ delay: 0.3, type: "spring" }}
           className="text-6xl md:text-8xl font-extrabold text-white drop-shadow-lg"
         >
-          MEAT <span className="text-red-200">EMPIRE</span>
+          CONTACT <span className="text-red-200">US</span>
         </motion.h1>
 
         {/* Tagline */}

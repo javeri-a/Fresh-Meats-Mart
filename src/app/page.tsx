@@ -17,7 +17,7 @@ import AboutSection from './aboutsec/page';
 import WhyChooseUs from './whychooseus/page';
 
 import Deliver from './deliver/page';
-import HowItWorks from './hoework/page';
+// import HowItWorks from './hoework/page';
 import Newsletters from './subscribe/page';
 import ProductCard from './prouctsCard/page';
 import TestimonialsCarousel from './testomonials/page';
@@ -156,7 +156,7 @@ export default function HeroSec() {
               transform hover:rotate-1 hover:scale-105 group"
           >
             <Image
-              src="/image.png"
+              src="/hero1.png"
               alt="Premium Meat Selection"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
@@ -220,7 +220,7 @@ export default function HeroSec() {
        <ProductCard/>
        <WhyChooseUs/>
         <Deliver/>
-        <HowItWorks/>
+        {/* <HowItWorks/> */}
         <TestimonialsCarousel/>
         
         <Newsletters/>

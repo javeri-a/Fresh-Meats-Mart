@@ -145,7 +145,7 @@ export default function HeroSec() {
               transform hover:rotate-1 hover:scale-105 group"
           >
             <Image
-              src="/image.png"
+              src="/hero1.png"
               alt="Premium Meat Selection"
               fill
               className="object-cover group-hover:scale-105 transition-transform duration-500"
