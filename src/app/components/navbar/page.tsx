@@ -75,7 +75,7 @@ const Navbar = () => {
               <MagnifyingGlassIcon className="h-5 w-5 text-red-700" />
             </div>
 
-            <Link href="cart" className="flex items-center hover:bg-red-600 p-2 rounded-md">
+            <Link href="/cart" className="flex items-center hover:bg-red-600 p-2 rounded-md">
               <ShoppingCartIcon className="h-6 w-6" />
               <span className="ml-1 bg-white text-red-700 rounded-full w-5 h-5 text-xs flex items-center justify-center">
                 0
