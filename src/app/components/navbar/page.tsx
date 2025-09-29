@@ -49,12 +49,8 @@ const Navbar = () => {
                 </div>
               </div>
 
-              <Link href="/qurbani" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-red-600">
-                Qurbani
-              </Link>
-              <Link href="/recipes" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-red-600">
-                Recipes
-              </Link>
+              
+              
               <Link href="/aboutpage" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-red-600">
                 About Us
               </Link>
@@ -112,21 +108,21 @@ const Navbar = () => {
                 Shop
               </button>
               <div className="pl-4">
-                <Link href="/shop/beef" className="block px-3 py-2 text-sm">
+                <Link href="meatProduct" className="block px-3 py-2 text-sm">
                   Beef
                 </Link>
-                <Link href="/shop/chicken" className="block px-3 py-2 text-sm">
+                <Link href="/chickenProducts" className="block px-3 py-2 text-sm">
                   Chicken
                 </Link>
-                <Link href="/shop/lamb" className="block px-3 py-2 text-sm">
-                  Lamb
+                <Link href="/goatProducts" className="block px-3 py-2 text-sm">
+                  Goat
                 </Link>
               </div>
             </div>
             <Link href="/recipes" className="block px-3 py-2 rounded-md text-base font-medium">
               Recipes
             </Link>
-            <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium">
+            <Link href="/aboutpage" className="block px-3 py-2 rounded-md text-base font-medium">
               About Us
             </Link>
             <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium">
