@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trash2, ShoppingBag, Plus, Minus, Truck, Shield, Heart, ArrowRight, Sparkles } from "lucide-react";
+import Image from "next/image";
 
 interface Product {
   _id: string;
@@ -154,7 +155,8 @@ export default function Cart() {
                         whileHover={{ scale: 1.05 }}
                         className="relative"
                       >
-                        <img
+                        <Image
+                        
                           src={item.image}
                           alt={item.name}
                           className="w-24 h-24 rounded-2xl object-cover shadow-md"
