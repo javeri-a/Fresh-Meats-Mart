@@ -61,9 +61,9 @@ const AboutUs = () => {
   ]
  
   return (
-    <section ref={containerRef} className="relative bg-gradient-to-br from-white via-red-50 to-orange-50 py-20 md:py-32 overflow-hidden">
+   <section ref={containerRef} className="relative bg-gradient-to-br from-white via-red-50 to-orange-50 py-20 md:py-32 overflow-hidden">
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 ">
         <motion.div
           className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-r from-red-200 to-orange-200 rounded-full blur-3xl opacity-40"
           animate={{
