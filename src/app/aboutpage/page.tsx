@@ -181,7 +181,7 @@ const AboutUs = () => {
                 </p>
                 <p>
                   Every cut is meticulously handpicked by our master butchers, ensuring that what graces your table meets the exacting 
-                  standards we'd proudly serve our own families.
+                  standards we had proudly serve our own families.
                 </p>
                 <p className="font-semibold text-gray-900">
                   Join thousands of households who trust us for their weekly meals, weekend BBQs, and special celebrations.
@@ -256,7 +256,9 @@ const AboutUs = () => {
               className="relative h-96 lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.5 }}
-            >
+          />
+        
+              
               <img
                 src="/abt.png"
                 alt="Professional butchers preparing premium meat cuts"
