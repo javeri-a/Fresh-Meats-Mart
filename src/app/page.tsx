@@ -17,7 +17,7 @@ import AboutSection from './aboutsec/page';
 import WhyChooseUs from './whychooseus/page';
 
 import Deliver from './deliver/page';
-// import HowItWorks from './hoework/page';
+ import HowItWorks from './hoework/page';
 import Newsletters from './subscribe/page';
 import ProductCard from './prouctsCard/page';
 import TestimonialsCarousel from './testomonials/page';
@@ -220,7 +220,7 @@ export default function HeroSec() {
        <ProductCard/>
        <WhyChooseUs/>
         <Deliver/>
-        {/* <HowItWorks/> */}
+        <HowItWorks/>
         <TestimonialsCarousel/>
         
         <Newsletters/>
