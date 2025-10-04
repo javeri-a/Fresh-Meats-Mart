@@ -21,8 +21,8 @@ const MeatDeliveryHero = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 leading-tight mb-6">
-              <span className="block text-red-700">Premium Quality</span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
+              <span className="block text-red-600">Premium Quality</span>
               <span className="block">Meat Delivery</span>
             </h1>
 
