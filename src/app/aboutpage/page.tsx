@@ -372,6 +372,8 @@ const AboutUs = () => {
               <Image
                 src="/abt.png"
                 alt="Professional butchers preparing premium meat cuts"
+                width={500}
+                height={600}
                 className="w-full h-full object-cover"
               />
               
