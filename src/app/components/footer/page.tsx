@@ -6,7 +6,7 @@
 // components/Footer.js
 "use client";
 import Link from 'next/link';
-import { FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope, FaLeaf, FaAward, FaShippingFast, FaRegHeart, FaArrowRight, FaUtensils } from 'react-icons/fa';
+import { FaFacebook, FaTwitter, FaInstagram, FaMapMarkerAlt, FaPhone, FaEnvelope,FaRegHeart, } from 'react-icons/fa';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
