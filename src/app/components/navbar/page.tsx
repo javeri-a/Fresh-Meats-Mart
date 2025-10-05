@@ -466,8 +466,8 @@ const Navbar = () => {
 
               {/* Shop Dropdown */}
               <div
-                className="relative"
-                onMouseEnter={() => setActiveDropdown("shop")}
+                // className="relative"
+                // onMouseEnter={() => setActiveDropdown("shop")}
                 onMouseLeave={() => setActiveDropdown(null)}
               >
                 <button
